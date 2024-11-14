@@ -181,14 +181,6 @@ def convert(
                     array[
                         channel, idx, x : x + subdat_size[-2], y : y + subdat_size[-1]
                     ] = subdat[channel : channel + 1, ...][0]
-
-            for channel in range(3):
-                if max_load is None or (
-                    subdat_size[-2] < max_load and subdat_size[-1] < max_load
-                ):
-                    array[
-                        channel, idx, x : x + subdat_size[-2], y : y + subdat_size[-1]
-                    ] = subdat[channel : channel + 1, ...][0]
                 else:
                     ni = ceildiv(subdat_size[-2], max_load)
                     nj = ceildiv(subdat_size[-1], max_load)
